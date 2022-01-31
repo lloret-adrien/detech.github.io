@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="icon" href="/detech/favicon.ico" />
+    <title>detech</title>
+    <link href="/detech/css/about.a344ea7a.css" rel="prefetch" />
+    <link href="/detech/css/chunk-2e43aaa7.264a4bea.css" rel="prefetch" />
+    <link href="/detech/css/chunk-ba832dde.6be346da.css" rel="prefetch" />
+    <link href="/detech/js/about.6b301c0a.js" rel="prefetch" />
+    <link href="/detech/js/chunk-2d0cc608.af1fb50f.js" rel="prefetch" />
+    <link href="/detech/js/chunk-2d0cf6d4.2d5294af.js" rel="prefetch" />
+    <link href="/detech/js/chunk-2d0d6575.103f7305.js" rel="prefetch" />
+    <link href="/detech/js/chunk-2e43aaa7.719e7790.js" rel="prefetch" />
+    <link href="/detech/js/chunk-ba832dde.2a7f1406.js" rel="prefetch" />
+    <link href="/detech/css/app.4ba8adb5.css" rel="preload" as="style" />
+    <link href="/detech/js/app.bfeb3653.js" rel="preload" as="script" />
+    <link
+      href="/detech/js/chunk-vendors.63cdeabc.js"
+      rel="preload"
+      as="script"
+    />
+    <link href="/detech/css/app.4ba8adb5.css" rel="stylesheet" />
+  </head>
+  <body>
+    <noscript
+      ><strong
+        >We're sorry but detech doesn't work properly without JavaScript
+        enabled. Please enable it to continue.</strong
+      ></noscript
+    >
+    <div id="app"></div>
+    <script src="/detech/js/chunk-vendors.63cdeabc.js"></script>
+    <script src="/detech/js/app.bfeb3653.js"></script>
+    <script type="text/javascript">
+    	let socket = new WebSocket("wss://webinfo.iutmontp.univ-montp2.fr/~lloreta");
+    	socket.onopen = function(e) {
+    	  alert("[open] Connection established");
+    	  alert("Sending to server");
+    	  //socket.send("My name is John");
+    	};
+
+    	socket.onmessage = function(event) {
+    	  alert(`[message] Data received from server: ${event.data}`);
+    	};
+
+    	socket.onclose = function(event) {
+    	  if (event.wasClean) {
+    	    alert(`[close] Connection closed cleanly, code=${event.code} reason=${event.reason}`);
+    	  } else {
+    	    // e.g. server process killed or network down
+    	    // event.code is usually 1006 in this case
+    	    alert('[close] Connection died');
+    	  }
+    	};
+
+    	socket.onerror = function(error) {
+    	  alert(`[error] ${error.message}`);
+    	};
+    </script>
+  </body>
+</html>
